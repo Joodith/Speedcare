@@ -1,0 +1,33 @@
+{% extends 'doctor/doctor_base.html' %}
+{% block predoctor %}
+<div class="container">
+
+<div class="card" style="width:390px">
+    <img class="card-img-top" src="https://images.moneycontrol.com/static-mcnews/2019/07/Doctor-770x433.jpg?impolicy=website&width=770&height=431" alt="Image" style="width:350px; height:250px">
+    <div class="card-body">
+        <h1 class="card-title">{{detdoc.name}}</h1>
+        <p>
+            <div class="card-text" style="font-size:25px">
+        <p><strong>Qualification:</strong>{{detdoc.qualf}}</p>
+        <p><strong>Specialisation:</strong>{{detdoc.special}}</p>
+        <p><strong>Contact_no:</strong>{{detdoc.contact_no}}</p>
+        <p><strong>Email-id:</strong>{{detdoc.user.email}}</p>
+    </div>
+    </p>
+</div>
+</div>
+{% endblock %}
+
+{% block doctor_content %}
+<div class="col-md-4">
+    <h1>List of appointments</h1>
+    {% if not detdoc.selected_doctor.count %}
+    <h2>No appointments yet!</h2>
+    {% else %}
+    {% for i in detdoc.selected_doctor.all %}
+    {% include 'appointment/appointment_list.html' %}
+    {% endfor %}
+    </div>
+    {% endif %}
+
+{% endblock %}

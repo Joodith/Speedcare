@@ -1,0 +1,14 @@
+{% extends 'doctor/doctor_base.html' %}
+{% block doctor_content %}
+<div class="container">
+    <div class="list-group">
+        {% for i in listdoc %}
+        <a href="{% url 'home' %}" class="list-group-item">
+            <h3 class="title list-group-item-heading">{{i.name}}</h3>
+            <h5 class="list-group-item-text">{{i.qualf}}</h5>
+            <h5 class="list-group-item-text">{{i.special}}</h5>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

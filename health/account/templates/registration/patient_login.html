@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block body_block %}
+<h1>Login Page!</h1>
+<div class="jumbotron">
+<form method="POST">
+    {% csrf_token %}
+    <label for="username">MOBILE NUMBER</label>
+    <input type="text" id="username" name="username" placeholder="Enter mobile number">
+    <input type="submit" class="btn btn-primary" value="Login">
+    {% for message in messages %}
+
+                    <div class="alert alert-warning">
+                        <a class="close" href="{% url 'account:pat_user_login' %}" data-dismiss="alert">×</a>
+
+                        {{ message }}
+
+                    </div>
+            {% endfor %}
+</form>
+    </div>
+{% endblock %}

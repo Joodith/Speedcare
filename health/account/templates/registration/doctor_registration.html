@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap3 %}
+{% block body_block %}
+<div class="jumbotron">
+<h2>Registration Page!</h2>
+{% if registered %}
+<h1>Thank you for registering!</h1>
+{% else %}
+<form method="POST">
+    {% csrf_token %}
+    {% bootstrap_form reg_form %}
+    {% bootstrap_form user_form %}
+    {% for message in messages %}
+
+                    <div class="alert alert-warning">
+                        <a class="close" href="{% url 'account:doc_reg' %}" data-dismiss="alert">×</a>
+
+                        {{ message }}
+
+                    </div>
+            {% endfor %}
+    <input type="submit" class="btn btn-primary" value="Register">
+</form>
+{% endif %}
+</div>
+{% endblock %}
